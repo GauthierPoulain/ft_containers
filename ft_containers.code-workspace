@@ -1,0 +1,30 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true,
+			"**/*.o": true
+		},
+		"github.copilot.enable": {
+			"*": false,
+			"yaml": false,
+			"plaintext": false,
+			"markdown": false
+		},
+		"discord.enabled": true,
+		"files.associations": {
+			"stack": "cpp",
+			"map": "cpp"
+		},
+		"C_Cpp.default.includePath": ["${workspaceFolder}/includes/"]
+	}
+}
