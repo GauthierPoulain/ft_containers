@@ -3,7 +3,7 @@ NAME = containers
 CC = clang++
 MAKE = make --no-print-directory
 
-CPPFLAGS = -Wall -Wextra -Werror -g -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 # CPPFLAGS += -fsanitize=address
 
 INCLUDE = ./includes
@@ -17,26 +17,37 @@ HEADERS = \
 SRCS = \
 	./main.cpp \
 
-OBJS = $(SRCS:%.cpp=%.o)
+FT_OBJS = $(SRCS:%.cpp=%_ft.o)
+STL_OBJS = $(SRCS:%.cpp=%_stl.o)
 
-%.o: %.cpp Makefile $(HEADERS)
+%_ft.o: %.cpp Makefile $(HEADERS)
 	$(CC) $(CPPFLAGS) -I$(INCLUDE) -c $< -o $@
 
-all: $(NAME)
+%_stl.o: %.cpp Makefile $(HEADERS)
+	$(CC) $(CPPFLAGS) -DSTL -I$(INCLUDE) -c $< -o $@
 
-$(NAME): $(OBJS)
-	$(CC) $(CPPFLAGS) -o $(NAME) $(OBJS)
+all: ft_$(NAME) 
+all: stl_$(NAME)
+
+ft_$(NAME): $(FT_OBJS)
+	$(CC) $(CPPFLAGS) -o ft_$(NAME) $(FT_OBJS)
+
+stl_$(NAME): $(STL_OBJS)
+	$(CC) $(CPPFLAGS) -o stl_$(NAME) $(STL_OBJS)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(FT_OBJS)
+	$(RM) $(STL_OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) ft_$(NAME)
+	$(RM) stl_$(NAME)
 
 re: fclean
 	$(MAKE) all
 
 test: all
-	/usr/bin/time -p ./containers
+	/usr/bin/time -p ./stl_$(NAME)
+	/usr/bin/time -p ./ft_$(NAME)
 
 .PHONY: all clean fclean test
