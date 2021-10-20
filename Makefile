@@ -12,6 +12,7 @@ HEADERS = \
 	$(INCLUDE)/map.hpp \
 	$(INCLUDE)/stack.hpp \
 	$(INCLUDE)/vector.hpp \
+	$(INCLUDE)/iterators/randomAccessIterator.hpp \
 
 
 SRCS = \
@@ -26,8 +27,7 @@ STL_OBJS = $(SRCS:%.cpp=%_stl.o)
 %_stl.o: %.cpp Makefile $(HEADERS)
 	$(CC) $(CPPFLAGS) -DSTL -I$(INCLUDE) -c $< -o $@
 
-all: ft_$(NAME) 
-all: stl_$(NAME)
+all: ft_$(NAME) stl_$(NAME)
 
 ft_$(NAME): $(FT_OBJS)
 	$(CC) $(CPPFLAGS) -o ft_$(NAME) $(FT_OBJS)
@@ -47,7 +47,11 @@ re: fclean
 	$(MAKE) all
 
 test: all
-	/usr/bin/time -p ./stl_$(NAME)
-	/usr/bin/time -p ./ft_$(NAME)
+	/usr/bin/time -p ./stl_$(NAME) 
+	/usr/bin/time -p ./ft_$(NAME) 
 
-.PHONY: all clean fclean test
+bench: all
+	/usr/bin/time -p ./stl_$(NAME) bench
+	/usr/bin/time -p ./ft_$(NAME) bench
+
+.PHONY: all clean fclean test bench
