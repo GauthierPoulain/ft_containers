@@ -12,7 +12,9 @@ HEADERS = \
 	$(INCLUDE)/map.hpp \
 	$(INCLUDE)/stack.hpp \
 	$(INCLUDE)/vector.hpp \
-	$(INCLUDE)/iterators/randomAccessIterator.hpp \
+	$(INCLUDE)/iterators/random_access_iterator.hpp \
+	$(INCLUDE)/iterators/reverse_iterator.hpp \
+	$(INCLUDE)/iterators/iterator_traits.hpp \
 
 
 SRCS = \

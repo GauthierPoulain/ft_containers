@@ -1,6 +1,7 @@
 #pragma once
 
-#include "./iterators/randomAccessIterator.hpp"
+#include "./iterators/random_access_iterator.hpp"
+#include "./iterators/reverse_iterator.hpp"
 
 namespace ft
 {
@@ -11,8 +12,16 @@ namespace ft
 	public:
 		typedef T value_type;
 		typedef Alloc allocator_type;
+		typedef allocator_type &reference;
+		typedef const allocator_type &const_reference;
+		typedef allocator_type *pointer;
+		typedef const allocator_type *const_pointer;
+		typedef ft::random_access_iterator<value_type> iterator;
+		typedef ft::random_access_iterator<const value_type> const_iterator;
+		typedef ft::reverse_iterator<value_type> reverse_iterator;
+		typedef ft::reverse_iterator<const_iterator> const_reverse_iterator;
 
-		typedef ft::randomAccessIterator<value_type> iterator;
+		typedef size_t size_type;
 
 		vector();
 		vector(size_t n, const T val);
