@@ -1,9 +1,11 @@
 #pragma once
 
+#include <memory>
+#include "./utils/commons.hpp"
 #include "./iterators/random_access_iterator.hpp"
 #include "./iterators/reverse_iterator.hpp"
 
-#include "./utils/commons.hpp"
+
 
 namespace ft
 {
@@ -37,26 +39,26 @@ namespace ft
 				_allocator.construct(&_tab[i], val);
 		}
 
-		template <class InputIterator>
-		vector(InputIterator first, InputIterator last, const allocator_type &alloc = allocator_type(),
-			   typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type * = NULL) : _size(0), _volume(0), _allocator(alloc), _tab(NULL)
-		{
-			_size = last - first;
-			_volume = _size;
-			_tab = _allocator.allocate(_size);
-			for (size_type i = 0; i < _size; i++)
-				_allocator.construct(&_tab[i], *(first + i));
-		}
+		// template <class InputIterator>
+		// vector(InputIterator first, InputIterator last, const allocator_type &alloc = allocator_type(),
+		// 	   typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type * = NULL) : _size(0), _volume(0), _allocator(alloc), _tab(NULL)
+		// {
+		// 	_size = last - first;
+		// 	_volume = _size;
+		// 	_tab = _allocator.allocate(_size);
+		// 	for (size_type i = 0; i < _size; i++)
+		// 		_allocator.construct(&_tab[i], *(first + i));
+		// }
 
 		vector(const vector &x) : _size(0)
 		{
 		}
 
+		~vector() { _allocator.deallocate(_tab, _size); }
+
 		vector &operator=(const vector &x)
 		{
 		}
-
-		~vector() { _allocator.deallocate(_tab, _size); }
 
 		iterator begin() { return iterator(_tab); }
 		const_iterator begin() { return const_iterator(_tab); }
