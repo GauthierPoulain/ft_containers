@@ -78,7 +78,12 @@ namespace ft
 			return *this;
 		}
 
-		
+		random_access_iterator operator+(difference_type n) const { return random_access_iterator<value_type>(_it + n); };
+		difference_type operator+(const random_access_iterator &it) { return _it + it._it; };
+		random_access_iterator operator-(difference_type n) const { return random_access_iterator<value_type>(_it - n); };
+		difference_type operator-(const random_access_iterator &it) { return _it - it._it; };
+
+		reference operator[](difference_type n) const { return _it[n]; };
 
 	private:
 		pointer _it;
