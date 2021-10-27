@@ -11,7 +11,7 @@ namespace ft
 		typedef T value_type;
 		typedef T &reference;
 		typedef T *pointer;
-		typedef std::ptrdiff_t difference_type;
+		typedef ptrdiff_t difference_type;
 		typedef std::random_access_iterator_tag iterator_category;
 
 		random_access_iterator() : _it(NULL) {}
@@ -66,6 +66,11 @@ namespace ft
 			return tmp;
 		}
 
+		random_access_iterator operator+(difference_type n) const { return random_access_iterator<value_type>(_it + n); };
+		difference_type operator+(const random_access_iterator &it) { return _it + it._it; };
+		random_access_iterator operator-(difference_type n) const { return random_access_iterator<value_type>(_it - n); };
+		difference_type operator-(const random_access_iterator &it) { return _it - it._it; };
+
 		random_access_iterator &operator+=(difference_type n)
 		{
 			_it += n;
@@ -77,11 +82,6 @@ namespace ft
 			_it -= n;
 			return *this;
 		}
-
-		random_access_iterator operator+(difference_type n) const { return random_access_iterator<value_type>(_it + n); };
-		difference_type operator+(const random_access_iterator &it) { return _it + it._it; };
-		random_access_iterator operator-(difference_type n) const { return random_access_iterator<value_type>(_it - n); };
-		difference_type operator-(const random_access_iterator &it) { return _it - it._it; };
 
 		reference operator[](difference_type n) const { return _it[n]; };
 

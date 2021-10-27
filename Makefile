@@ -15,6 +15,8 @@ HEADERS = \
 	$(INCLUDE)/iterators/random_access_iterator.hpp \
 	$(INCLUDE)/iterators/reverse_iterator.hpp \
 	$(INCLUDE)/iterators/iterator_traits.hpp \
+	$(INCLUDE)/utils/commons.hpp \
+	$(INCLUDE)/utils/is_integral.hpp \
 
 
 SRCS = \
