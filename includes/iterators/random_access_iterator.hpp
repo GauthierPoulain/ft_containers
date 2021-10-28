@@ -11,7 +11,11 @@ namespace ft
 		typedef T value_type;
 		typedef T &reference;
 		typedef T *pointer;
+#if __linux__
+		typedef __gnu_cxx::ptrdiff_t difference_type;
+#else
 		typedef ptrdiff_t difference_type;
+#endif
 		typedef std::random_access_iterator_tag iterator_category;
 
 		random_access_iterator() : _it(NULL) {}

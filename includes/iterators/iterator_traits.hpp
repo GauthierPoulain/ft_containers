@@ -16,7 +16,11 @@ namespace ft
 	template <class T>
 	struct iterator_traits<T *>
 	{
+#if __linux__
+		typedef __gnu_cxx::ptrdiff_t difference_type;
+#else
 		typedef ptrdiff_t difference_type;
+#endif
 		typedef T value_type;
 		typedef T &pointer;
 		typedef T *reference;
@@ -25,7 +29,11 @@ namespace ft
 	template <class T>
 	struct iterator_traits<const T *>
 	{
+#if __linux__
+		typedef __gnu_cxx::ptrdiff_t difference_type;
+#else
 		typedef ptrdiff_t difference_type;
+#endif
 		typedef T value_type;
 		typedef const T &pointer;
 		typedef const T *reference;
