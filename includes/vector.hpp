@@ -48,20 +48,49 @@ namespace ft
 				_allocator.construct(&_tab[i], *(first + i));
 		}
 
-		// vector(const vector &x) : _size(0)
-		// {
-		// }
+		vector(const vector &x) : _size(0)
+		{
+			_size = x._size;
+			_volume = x._volume;
+			_allocator = x._allocator;
+			_tab = _allocator.allocate(_volume);
+			for (size_t i = 0; i < _size; i++)
+				_allocator.construct(&_tab[i], x._tab[i]);
+		}
 
 		~vector() { _allocator.deallocate(_tab, _size); }
 
-		// vector &operator=(const vector &x)
-		// {
-		// }
+		vector &operator=(const vector &x)
+		{
+			_size = x._size;
+			_volume = x._volume;
+			_allocator = x._allocator;
+			_tab = x._tab;
+			return *this;
+		}
 
 		iterator begin() { return iterator(_tab); }
 		const_iterator begin() const { return const_iterator(_tab); }
 		iterator end() { return iterator(&_tab[_size]); }
 		const_iterator end() const { return const_iterator(&_tab[_size]); }
+
+		void swap(vector &x)
+		{
+			size_type tmpSize = x._size;
+			size_type tmpVolume = x._volume;
+			allocator_type tmpAllocator = x._allocator;
+			pointer tmpTab = x._tab;
+
+			x._size = _size;
+			x._volume = _volume;
+			x._allocator = _allocator;
+			x._tab = _tab;
+
+			_size = tmpSize;
+			_volume = tmpVolume;
+			_allocator = tmpAllocator;
+			_tab = tmpTab;
+		}
 
 	private:
 		size_type _size;
