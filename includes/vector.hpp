@@ -5,8 +5,6 @@
 #include "./iterators/random_access_iterator.hpp"
 #include "./iterators/reverse_iterator.hpp"
 
-
-
 namespace ft
 {
 	template <class T, class Alloc = std::allocator<T> >
@@ -17,10 +15,10 @@ namespace ft
 		typedef T value_type;
 		typedef Alloc allocator_type;
 
-		typedef typename allocator_type::reference &reference;
-		typedef typename allocator_type::const_reference &const_reference;
-		typedef typename allocator_type::pointer *pointer;
-		typedef typename allocator_type::const_pointer *const_pointer;
+		typedef typename allocator_type::reference reference;
+		typedef typename allocator_type::const_reference const_reference;
+		typedef typename allocator_type::pointer pointer;
+		typedef typename allocator_type::const_pointer const_pointer;
 
 		typedef ft::random_access_iterator<value_type> iterator;
 		typedef ft::random_access_iterator<const value_type> const_iterator;
@@ -39,31 +37,31 @@ namespace ft
 				_allocator.construct(&_tab[i], val);
 		}
 
-		// template <class InputIterator>
-		// vector(InputIterator first, InputIterator last, const allocator_type &alloc = allocator_type(),
-		// 	   typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type * = NULL) : _size(0), _volume(0), _allocator(alloc), _tab(NULL)
-		// {
-		// 	_size = last - first;
-		// 	_volume = _size;
-		// 	_tab = _allocator.allocate(_size);
-		// 	for (size_type i = 0; i < _size; i++)
-		// 		_allocator.construct(&_tab[i], *(first + i));
-		// }
-
-		vector(const vector &x) : _size(0)
+		template <class InputIterator>
+		vector(InputIterator first, InputIterator last, const allocator_type &alloc = allocator_type(),
+			   typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type * = NULL) : _size(0), _volume(0), _allocator(alloc), _tab(NULL)
 		{
+			_size = last - first;
+			_volume = _size;
+			_tab = _allocator.allocate(_size);
+			for (size_type i = 0; i < _size; i++)
+				_allocator.construct(&_tab[i], *(first + i));
 		}
+
+		// vector(const vector &x) : _size(0)
+		// {
+		// }
 
 		~vector() { _allocator.deallocate(_tab, _size); }
 
-		vector &operator=(const vector &x)
-		{
-		}
+		// vector &operator=(const vector &x)
+		// {
+		// }
 
 		iterator begin() { return iterator(_tab); }
-		const_iterator begin() { return const_iterator(_tab); }
+		const_iterator begin() const { return const_iterator(_tab); }
 		iterator end() { return iterator(&_tab[_size]); }
-		const_iterator end() { return const_iterator(&_tab[_size]); }
+		const_iterator end() const { return const_iterator(&_tab[_size]); }
 
 	private:
 		size_type _size;
