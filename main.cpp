@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <unistd.h>
 
 #ifdef STL
 #include <map>
@@ -13,11 +12,27 @@ namespace ft = std;
 #include "./includes/vector.hpp"
 #endif
 
-int run_benchmark(bool debug)
+void run_benchmark(void)
 {
-	std::cout << "running benchmark..." << std::endl;
-	(void)debug;
-	return 0;
+}
+
+void run_test(void)
+{
+	ft::vector<int> vec1;
+
+	for (size_t i = 0; i < 20; i++)
+	{
+		vec1.push_back(i);
+	}
+
+	ft::vector<int>::iterator iter = vec1.begin();
+
+	vec1.insert(iter + 15, 50);
+
+	while (iter != vec1.end())
+	{
+		std::cout << *iter++ << std::endl;
+	}
 }
 
 int main(int argc, char const *argv[])
@@ -27,32 +42,12 @@ int main(int argc, char const *argv[])
 #else
 	std::cout << "FT build" << std::endl;
 #endif
-
-	if (argc == 2)
-	{
-		if (std::string(argv[1]) == "bench")
-			return run_benchmark(false);
-		else if (std::string(argv[1]) == "debug_bench")
-			return run_benchmark(true);
-	}
+	(void)argc;
+	if (argv[1] && std::string(argv[1]) == "test")
+		run_test();
+	else if (argv[1] && std::string(argv[1]) == "bench")
+		run_benchmark();
 	else
-	{														 // constructors used in the same order as described above:
-		ft::vector<int> first;								 // empty vector of ints
-		ft::vector<int> second(4, 100);						 // four ints with value 100
-		ft::vector<int> third(second.begin(), second.end()); // iterating through second
-		ft::vector<int> fourth(third);						 // a copy of third
-
-		// the iterator constructor can also be used to construct from arrays:
-		int myints[] = {16, 2, 77, 29};
-		ft::vector<int> fifth(myints, myints + sizeof(myints) / sizeof(int));
-
-		std::cout << "The contents of fifth are:";
-		for (ft::vector<int>::iterator it = fifth.begin(); it != fifth.end(); ++it)
-			std::cout << ' ' << *it;
-		std::cout << '\n';
-
-		return 0;
-	}
-
+		std::cout << "usage ./build_name [test|bench (debug)]" << std::endl;
 	return 0;
 }
