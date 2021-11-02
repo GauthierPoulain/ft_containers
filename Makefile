@@ -20,7 +20,7 @@ HEADERS = \
 
 
 SRCS = \
-	./main.cpp \
+	./tests/vector.cpp \
 
 FT_OBJS = $(SRCS:%.cpp=%_ft.o)
 STL_OBJS = $(SRCS:%.cpp=%_stl.o)
