@@ -36,6 +36,7 @@ void run_test(void)
 }
 
 void vector_test(void);
+void stack_test(void);
 
 int main(void)
 {
@@ -46,6 +47,7 @@ int main(void)
 	std::cout << "FT build" << std::endl;
 #endif
 
-	vector_test();
+	// vector_test();
+	stack_test();
 	return 0;
 }
