@@ -14,17 +14,14 @@ namespace ft
 	public:
 		typedef T value_type;
 		typedef Alloc allocator_type;
-
 		typedef typename allocator_type::reference reference;
 		typedef typename allocator_type::const_reference const_reference;
 		typedef typename allocator_type::pointer pointer;
 		typedef typename allocator_type::const_pointer const_pointer;
-
 		typedef ft::random_access_iterator<value_type> iterator;
 		typedef ft::random_access_iterator<const value_type> const_iterator;
 		typedef ft::reverse_iterator<iterator> reverse_iterator;
 		typedef ft::reverse_iterator<const_iterator> const_reverse_iterator;
-
 		typedef typename ft::iterator_traits<iterator>::difference_type difference_type;
 		typedef size_t size_type;
 
@@ -68,16 +65,23 @@ namespace ft
 		}
 
 		iterator begin() { return iterator(_tab); }
+
 		const_iterator begin() const { return const_iterator(_tab); }
+
 		iterator end() { return iterator(&_tab[_size]); }
+
 		const_iterator end() const { return const_iterator(&_tab[_size]); }
 
 		reverse_iterator rbegin() { return reverse_iterator(end()); }
+
 		const_reverse_iterator rbegin() const { return const_reverse_iterator(end()); }
+
 		reverse_iterator rend() { return reverse_iterator(begin()); }
+
 		const_reverse_iterator rend() const { return const_reverse_iterator(begin()); }
 
 		size_type size() const { return _size; }
+
 		size_type max_size() const { return _allocator.max_size(); }
 
 		void resize(size_type n, value_type val = value_type())
@@ -141,8 +145,11 @@ namespace ft
 		}
 
 		reference front() { return _tab[0]; }
+
 		const_reference front() const { return _tab[0]; }
+
 		reference back() { return _tab[_size - 1]; }
+
 		const_reference back() const { return _tab[_size - 1]; }
 
 		template <class InputIterator>
@@ -193,6 +200,7 @@ namespace ft
 			_allocator.construct(&_tab[dist], val);
 			return iterator(begin() + dist);
 		}
+
 		void insert(iterator position, size_type n, const value_type &val)
 		{
 			size_type dist = position - begin();
@@ -209,6 +217,7 @@ namespace ft
 			for (size_type i = 0; i < n; i++)
 				_allocator.construct(&_tab[dist + i], val);
 		}
+
 		template <class InputIterator>
 		void insert(iterator position, InputIterator first, InputIterator last,
 					typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type * = NULL)
@@ -241,6 +250,7 @@ namespace ft
 			_size--;
 			return begin() + dist;
 		}
+
 		iterator erase(iterator first, iterator last)
 		{
 			size_type dist = first - begin();
