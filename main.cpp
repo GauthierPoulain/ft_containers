@@ -47,7 +47,7 @@ int main(void)
 	std::cout << "FT build" << std::endl;
 #endif
 
-	// vector_test();
-	stack_test();
+	vector_test();
+	// stack_test();
 	return 0;
 }

@@ -62,10 +62,8 @@ namespace ft
 
 		vector &operator=(const vector &x)
 		{
-			_size = x._size;
-			_volume = x._volume;
-			_allocator = x._allocator;
-			_tab = x._tab;
+			vector tmp(x);
+			swap(x);
 			return *this;
 		}
 
