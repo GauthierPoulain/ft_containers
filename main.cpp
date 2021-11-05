@@ -35,19 +35,17 @@ void run_test(void)
 	}
 }
 
-int main(int argc, char const *argv[])
+void vector_test(void);
+
+int main(void)
 {
+
 #ifdef STL
 	std::cout << "STL build" << std::endl;
 #else
 	std::cout << "FT build" << std::endl;
 #endif
-	(void)argc;
-	if (argv[1] && std::string(argv[1]) == "test")
-		run_test();
-	else if (argv[1] && std::string(argv[1]) == "bench")
-		run_benchmark();
-	else
-		std::cout << "usage ./build_name [test|bench (debug)]" << std::endl;
+
+	vector_test();
 	return 0;
 }
