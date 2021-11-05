@@ -48,6 +48,6 @@ int main(void)
 #endif
 
 	vector_test();
-	// stack_test();
+	stack_test();
 	return 0;
 }
