@@ -2,12 +2,12 @@
 #include <iostream>
 
 #ifdef STL
-#include <stack>
+#include <map>
 namespace ft = std;
 #else
-#include "../includes/stack.hpp"
+#include "../includes/map.hpp"
 #endif
 
-void stack_test()
+void map_test()
 {
 }

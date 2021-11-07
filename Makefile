@@ -14,15 +14,19 @@ HEADERS = \
 	$(INCLUDE)/vector.hpp \
 	$(INCLUDE)/iterators/random_access_iterator.hpp \
 	$(INCLUDE)/iterators/reverse_iterator.hpp \
+	$(INCLUDE)/iterators/RB_iterators.hpp \
 	$(INCLUDE)/iterators/iterator_traits.hpp \
 	$(INCLUDE)/utils/commons.hpp \
 	$(INCLUDE)/utils/is_integral.hpp \
+	$(INCLUDE)/utils/compare.hpp \
+	$(INCLUDE)/utils/RB_tree.hpp \
 
 
 SRCS = \
 	./main.cpp \
 	./tests/vector.cpp \
 	./tests/stack.cpp \
+	./tests/map.cpp \
 
 FT_OBJS = $(SRCS:%.cpp=%_ft.o)
 STL_OBJS = $(SRCS:%.cpp=%_stl.o)
