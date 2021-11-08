@@ -128,16 +128,13 @@ namespace ft
 					newNode->color = BLACK;
 				else
 					_insertFix(newNode);
-				//root may be changed after fixing the tree so fix it
 				_root = _getRoot(newNode);
-				//std::cout << newNode->data.second << std::endl;
 				return ft::make_pair(iterator(newNode, _root, _NIL), true);
 			}
 			else
 			{
 				_alloc.destroy(newNode);
 				_alloc.deallocate(newNode, 1);
-				//std::cout << newNode->data.second << std::endl;
 				return ft::make_pair(iterator(ret.first, _root, _NIL), false);
 			}
 		}
