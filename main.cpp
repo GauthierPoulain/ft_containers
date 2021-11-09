@@ -1,5 +1,5 @@
-#include <iostream>
 #include <string>
+#include <iostream>
 
 #ifdef STL
 #include <map>
@@ -11,10 +11,6 @@ namespace ft = std;
 #include "./includes/stack.hpp"
 #include "./includes/vector.hpp"
 #endif
-
-void run_benchmark(void)
-{
-}
 
 void run_test(void)
 {
@@ -48,8 +44,8 @@ int main(void)
 	std::cout << "FT build" << std::endl;
 #endif
 
-	// vector_test();
+	vector_test();
 	// stack_test();
-	map_test();
+	// map_test();
 	return 0;
 }

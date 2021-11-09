@@ -52,16 +52,14 @@ clean:
 fclean: clean
 	$(RM) ft_$(NAME)
 	$(RM) stl_$(NAME)
+	$(RM) *.out
 
 re: fclean
 	$(MAKE) all
 
 test: all
-	/usr/bin/time -p ./stl_$(NAME) 
-	/usr/bin/time -p ./ft_$(NAME) 
-
-bench: all
-	/usr/bin/time -p ./stl_$(NAME) bench
-	/usr/bin/time -p ./ft_$(NAME) bench
+	./stl_$(NAME) > stl_test.out
+	./ft_$(NAME) > ft_test.out
+	diff stl_test.out ft_test.out
 
 .PHONY: all clean fclean test bench

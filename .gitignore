@@ -1,3 +1,4 @@
 *.o
 ft_containers
 stl_containers
+*.out

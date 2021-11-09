@@ -24,7 +24,8 @@
 		"files.associations": {
 			"stack": "cpp",
 			"map": "cpp",
-			"memory": "cpp"
+			"memory": "cpp",
+			"vector": "cpp"
 		},
 		"C_Cpp.default.includePath": ["${workspaceFolder}/includes/"]
 	}

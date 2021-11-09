@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <cmath>
 #include "./utils/commons.hpp"
 #include "./iterators/random_access_iterator.hpp"
 #include "./iterators/reverse_iterator.hpp"
@@ -82,7 +83,11 @@ namespace ft
 
 		size_type size() const { return _size; }
 
-		size_type max_size() const { return _allocator.max_size(); }
+		size_type max_size() const
+		{
+			return std::min<size_type>(_allocator.max_size(),
+									   std::numeric_limits<difference_type>::max());
+		}
 
 		void resize(size_type n, value_type val = value_type())
 		{
