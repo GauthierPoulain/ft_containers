@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include <cmath>
+#include <limits>
 #include "./utils/commons.hpp"
 #include "./iterators/random_access_iterator.hpp"
 #include "./iterators/reverse_iterator.hpp"

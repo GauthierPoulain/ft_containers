@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <sstream>
 
 #ifdef STL
 #include <vector>
@@ -16,6 +17,13 @@ void print_vector(ft::vector<T> vt)
 	while (it != vt.end())
 		std::cout << *it++ << " ";
 	std::cout << std::endl;
+}
+
+std::string itoa(int a)
+{
+	std::ostringstream temp;
+	temp << a;
+	return temp.str();
 }
 
 void vector_test()
@@ -69,23 +77,30 @@ void vector_test()
 		print_vector(test);
 		test.pop_back();
 		print_vector(test);
-		std::cout << test.capacity() << std::endl;
 		std::cout << test.front() << ' ' << *test.begin() << ' ' << test.back() << ' ' << *test.end() << ' ' << test.empty() << std::endl;
+		std::cout << *test.rbegin() << ' ' << *(test.rend() - 1) << ' ' << test.capacity() << std::endl;
 		print_vector(test);
 		test.clear();
-		std::cout << test.capacity() << std::endl;
-		std::cout << "zizi" << sizeof(int) << std::endl;
 		std::cout << test.front() << ' ' << *test.begin() << ' ' << *test.end() << ' ' << test.empty() << std::endl;
+		std::cout << *test.rbegin() + 1 << ' ' << *test.rend() + 1 << ' ' << test.capacity() << std::endl;
 		print_vector(test);
 	}
 	{
 		std::cout << "phase 3" << std::endl;
-
-		ft::vector<int> test;
-		for (size_t i = 'a'; i <= 5000; i++)
-			test.push_back(i);
-
-		std::cout << test.get_allocator().max_size() << std::endl;
-		std::cout << test.max_size() << std::endl;
+		ft::vector<int> itest;
+		for (size_t i = 0; i <= 10; i++)
+			itest.push_back(i);
+		ft::vector<char> ctest;
+		for (size_t i = 0; i <= 10; i++)
+			ctest.push_back(i);
+		ft::vector<std::string> stest;
+		for (size_t i = 0; i <= 10; i++)
+			stest.push_back(itoa(i));
+		std::cout << itest.get_allocator().max_size() << std::endl;
+		std::cout << itest.max_size() << std::endl;
+		std::cout << ctest.get_allocator().max_size() << std::endl;
+		std::cout << ctest.max_size() << std::endl;
+		std::cout << stest.get_allocator().max_size() << std::endl;
+		std::cout << stest.max_size() << std::endl;
 	}
 }
