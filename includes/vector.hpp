@@ -100,7 +100,7 @@ namespace ft
 				_size = n;
 			}
 			else
-				this->insert(this->end(), n - this->size(), val);
+				this->insert(this->end(), n - _size, val);
 		}
 
 		size_type capacity() const { return _volume; }
@@ -109,6 +109,7 @@ namespace ft
 
 		void reserve(size_type n)
 		{
+			n = _getValidSize(n);
 			if (n > this->max_size())
 				throw std::length_error("vector::reserve");
 			else if (n > _volume)
@@ -303,6 +304,15 @@ namespace ft
 		{
 			this->reserve((this->size() > 0) ? (int)(this->size() * 2) : 1);
 		}
+		size_t _getValidSize(size_t n)
+		{
+			if ((n & (n - 1)) == 0)
+				return n;
+			size_t newSize = 1;
+			while (newSize < n)
+				newSize *= 2;
+			return newSize;
+		}
 		size_type _size;
 		size_type _volume;
 		allocator_type _allocator;
@@ -331,19 +341,19 @@ namespace ft
 	template <class T, class Alloc>
 	bool operator<=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
 	{
-		return !(rhs < lhs);
+		return (lhs <= rhs);
 	}
 
 	template <class T, class Alloc>
 	bool operator>(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
 	{
-		return rhs < lhs;
+		return (lhs > rhs);
 	}
 
 	template <class T, class Alloc>
 	bool operator>=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
 	{
-		return !(lhs < rhs);
+		return (lhs >= rhs);
 	}
 
 	template <class T, class Alloc>

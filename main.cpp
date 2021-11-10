@@ -51,10 +51,10 @@ int main(void)
 		clock_t end;
 
 		start = clock();
-		size_t pass = 10;
+		size_t pass = 1;
 		for (size_t i = 0; i < pass; i++)
 		{
-			std::cout << "pass " << i << '/' << pass << std::endl;
+			std::cout << "pass " << i + 1 << '/' << pass << std::endl;
 			vector_test();
 		}
 		end = clock();

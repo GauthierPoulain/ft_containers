@@ -77,12 +77,11 @@ void vector_test()
 		print_vector(test);
 		test.pop_back();
 		print_vector(test);
-		std::cout << test.front() << ' ' << *test.begin() << ' ' << test.back() << ' ' << *test.end() << ' ' << test.empty() << std::endl;
+		std::cout << test.front() << ' ' << *test.begin() << ' ' << test.back() << ' ' << *(test.end() - 1) << ' ' << test.empty() << std::endl;
 		std::cout << *test.rbegin() << ' ' << *(test.rend() - 1) << ' ' << test.capacity() << std::endl;
 		print_vector(test);
 		test.clear();
-		std::cout << test.front() << ' ' << *test.begin() << ' ' << *test.end() << ' ' << test.empty() << std::endl;
-		std::cout << *(test.rbegin() - 1) << ' ' << *(test.rend() - 1) << ' ' << test.capacity() << std::endl;
+		std::cout << test.size() << ' ' << test.capacity() << ' ' << test.empty() << std::endl;
 		print_vector(test);
 	}
 	// if (false)
@@ -106,8 +105,8 @@ void vector_test()
 	// if (false)
 	{
 		ft::vector<char> test;
-		for (size_t i = 'a'; i <= 'f'; i++)
-			test.push_back(i);
+		for (size_t i = 0; i <= 4; i++)
+			test.push_back('a' + 1);
 		std::cout << test.capacity() << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
 		test.resize(10);
 		test.reserve(10);
