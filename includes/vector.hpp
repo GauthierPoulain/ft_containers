@@ -109,7 +109,9 @@ namespace ft
 
 		void reserve(size_type n)
 		{
+#ifdef __APPLE__
 			n = _getValidSize(n);
+#endif
 			if (n > this->max_size())
 				throw std::length_error("vector::reserve");
 			else if (n > _volume)
@@ -329,7 +331,7 @@ namespace ft
 	template <class T, class Alloc>
 	bool operator!=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
 	{
-		return !(lhs == rhs);
+		return (lhs != rhs);
 	}
 
 	template <class T, class Alloc>
