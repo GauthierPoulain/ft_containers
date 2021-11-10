@@ -51,7 +51,7 @@ int main(void)
 		clock_t end;
 
 		start = clock();
-		size_t pass = 1;
+		size_t pass = 30;
 		for (size_t i = 0; i < pass; i++)
 		{
 			std::cout << "pass " << i + 1 << '/' << pass << std::endl;

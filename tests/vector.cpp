@@ -120,7 +120,7 @@ void vector_test()
 	{
 		ft::vector<int> test;
 		size_t last = -1;
-		for (size_t i = 0; i <= 100000000; i++)
+		for (size_t i = 0; i <= 15000000; i++)
 		{
 			test.push_back(i);
 			if (last != test.capacity())
