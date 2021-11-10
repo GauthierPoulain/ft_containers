@@ -142,6 +142,7 @@ void vector_test()
 		ft::vector<char> test3;
 		for (size_t i = 0; i <= 2; i++)
 			test2.push_back('a' + 1);
+		std::cout << (test1 < test1) << (test1 <= test1) << (test1 == test1) << (test1 != test1) << (test1 >= test1) << (test1 > test1) << std::endl;
 		std::cout << (test1 < test2) << (test1 <= test2) << (test1 == test2) << (test1 != test2) << (test1 >= test2) << (test1 > test2) << std::endl;
 		std::cout << (test1 < test3) << (test1 <= test3) << (test1 == test3) << (test1 != test3) << (test1 >= test3) << (test1 > test3) << std::endl;
 	}
