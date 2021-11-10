@@ -116,7 +116,7 @@ void vector_test()
 		test.push_back('a');
 		std::cout << test.capacity() << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
 	}
-	if (false)
+	// if (false)
 	{
 		ft::vector<int> test;
 		size_t last = -1;
