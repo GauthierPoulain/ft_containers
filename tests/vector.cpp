@@ -131,4 +131,18 @@ void vector_test()
 		}
 		std::cout << test.capacity() << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
 	}
+	// if (false)
+	{
+		ft::vector<char> test1;
+		for (size_t i = 0; i <= 2; i++)
+			test1.push_back('a' + 1);
+		ft::vector<char> test2;
+		for (size_t i = 0; i <= 15; i++)
+			test2.push_back('a' + 1);
+		ft::vector<char> test3;
+		for (size_t i = 0; i <= 2; i++)
+			test2.push_back('a' + 1);
+		std::cout << (test1 < test2) << (test1 <= test2) << (test1 == test2) << (test1 != test2) << (test1 >= test2) << (test1 > test2) << std::endl;
+		std::cout << (test1 < test3) << (test1 <= test3) << (test1 == test3) << (test1 != test3) << (test1 >= test3) << (test1 > test3) << std::endl;
+	}
 }
