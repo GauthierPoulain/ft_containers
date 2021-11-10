@@ -80,7 +80,7 @@ void vector_test()
 		std::cout << test.front() << ' ' << *test.begin() << ' ' << test.back() << ' ' << *(test.end() - 1) << ' ' << test.empty() << std::endl;
 		std::cout << *test.rbegin() << ' ' << *(test.rend() - 1) << ' ' << test.capacity() << std::endl;
 		print_vector(test);
-		test.clear();
+		// test.clear();
 		std::cout << test.size() << ' ' << test.capacity() << ' ' << test.empty() << std::endl;
 		print_vector(test);
 	}
