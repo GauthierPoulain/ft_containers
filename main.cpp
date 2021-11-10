@@ -1,5 +1,7 @@
 #include <string>
 #include <iostream>
+#include <iomanip>
+#include <time.h>
 
 #ifdef STL
 #include <map>
@@ -44,7 +46,23 @@ int main(void)
 	std::cout << "FT build" << std::endl;
 #endif
 
-	vector_test();
+	{
+		clock_t start;
+		clock_t end;
+
+		start = clock();
+		size_t pass = 10;
+		for (size_t i = 0; i < pass; i++)
+		{
+			std::cout << "pass " << i << '/' << pass << std::endl;
+			vector_test();
+		}
+		end = clock();
+		double difference = difftime(end, start);
+		std::cout << std::fixed << std::showpoint << std::setprecision(3);
+		std::cout << difference / 1000000 << " seconds" << std::endl;
+	}
+
 	// stack_test();
 	// map_test();
 	return 0;

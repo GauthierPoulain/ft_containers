@@ -91,20 +91,16 @@ namespace ft
 
 		void resize(size_type n, value_type val = value_type())
 		{
-			if (n < _size)
+			if (n > this->max_size())
+				throw(std::length_error("vector::resize"));
+			else if (n < _size)
 			{
 				for (size_type i = n; i < _size; i++)
 					_allocator.destroy(&_tab[i]);
 				_size = n;
 			}
-			else if (n > _volume)
-				reserve(n);
-			if (n > _size)
-			{
-				for (size_type i = _size; i < n; i++)
-					_allocator.construct(&_tab[i], val);
-				_size = n;
-			}
+			else
+				this->insert(this->end(), n - this->size(), val);
 		}
 
 		size_type capacity() const { return _volume; }
@@ -113,8 +109,8 @@ namespace ft
 
 		void reserve(size_type n)
 		{
-			if (n > max_size())
-				throw std::length_error("Error: max_size reached!");
+			if (n > this->max_size())
+				throw std::length_error("vector::reserve");
 			else if (n > _volume)
 			{
 				value_type *buf = _allocator.allocate(n);
@@ -305,12 +301,8 @@ namespace ft
 	private:
 		void _reAlloc()
 		{
-			if (_volume == 0)
-				reserve(1);
-			else
-				reserve(_volume * 2);
+			this->reserve((this->size() > 0) ? (int)(this->size() * 2) : 1);
 		}
-
 		size_type _size;
 		size_type _volume;
 		allocator_type _allocator;

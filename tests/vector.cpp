@@ -28,8 +28,8 @@ std::string itoa(int a)
 
 void vector_test()
 {
+	// if (false)
 	{
-		std::cout << "phase 1" << std::endl;
 		ft::vector<char> test;
 		for (size_t i = 'a'; i <= 'f'; i++)
 			test.push_back(i);
@@ -43,8 +43,8 @@ void vector_test()
 		print_vector(testcpy);
 		print_vector(testassign);
 	}
+	// if (false)
 	{
-		std::cout << "phase 2" << std::endl;
 		ft::vector<char> *test = new ft::vector<char>();
 		for (size_t i = 'a'; i <= 'f'; i++)
 			test->push_back(i);
@@ -61,8 +61,8 @@ void vector_test()
 		delete testcpy;
 		delete test;
 	}
+	// if (false)
 	{
-		std::cout << "phase 3" << std::endl;
 		ft::vector<char> test;
 		for (size_t i = 'a'; i <= 'f'; i++)
 			test.push_back(i);
@@ -82,11 +82,11 @@ void vector_test()
 		print_vector(test);
 		test.clear();
 		std::cout << test.front() << ' ' << *test.begin() << ' ' << *test.end() << ' ' << test.empty() << std::endl;
-		std::cout << *test.rbegin() + 1 << ' ' << *test.rend() + 1 << ' ' << test.capacity() << std::endl;
+		std::cout << *(test.rbegin() - 1) << ' ' << *(test.rend() - 1) << ' ' << test.capacity() << std::endl;
 		print_vector(test);
 	}
+	// if (false)
 	{
-		std::cout << "phase 3" << std::endl;
 		ft::vector<int> itest;
 		for (size_t i = 0; i <= 10; i++)
 			itest.push_back(i);
@@ -102,5 +102,34 @@ void vector_test()
 		std::cout << ctest.max_size() << std::endl;
 		std::cout << stest.get_allocator().max_size() << std::endl;
 		std::cout << stest.max_size() << std::endl;
+	}
+	// if (false)
+	{
+		ft::vector<char> test;
+		for (size_t i = 'a'; i <= 'f'; i++)
+			test.push_back(i);
+		std::cout << test.capacity() << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
+		test.resize(10);
+		test.reserve(10);
+		std::cout << test.capacity() << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
+		test.push_back('a');
+		test.push_back('a');
+		test.push_back('a');
+		std::cout << test.capacity() << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
+	}
+	// if (false)
+	{
+		ft::vector<int> test;
+		size_t last = -1;
+		for (size_t i = 0; i <= 100000000; i++)
+		{
+			test.push_back(i);
+			if (last != test.capacity())
+			{
+				std::cout << i << ' ' << test.capacity() << ' ' << test.empty() << ' ' << test.size() << std::endl;
+				last = test.capacity();
+			}
+		}
+		std::cout << test.capacity() << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
 	}
 }
