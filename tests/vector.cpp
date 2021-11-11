@@ -176,4 +176,26 @@ void vector_test()
 		}
 		std::cout << test.capacity() << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
 	}
+	// if (false)
+	{
+		ft::vector<char> tab;
+		for (int i = 65; i < 85; i++)
+			tab.push_back(i);
+		ft::vector<char>::iterator it = tab.begin();
+		while (it != tab.end())
+			std::cout << *it++ << ' ';
+		std::cout << std::endl;
+		ft::vector<char>::const_iterator cit = --it;
+		std::cout << *cit << std::endl;
+		ft::vector<char> rtab;
+		for (int i = 65; i < 85; i++)
+			rtab.push_back(i);
+		ft::vector<char>::reverse_iterator rit = rtab.rbegin();
+		while (rit != rtab.rend())
+			std::cout << *rit++ << ' ';
+		std::cout << std::endl;
+		ft::vector<char>::const_reverse_iterator rcit = --rit;
+		std::cout << *rcit << std::endl;
+		std::cout << std::endl;
+	}
 }
