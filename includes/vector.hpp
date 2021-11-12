@@ -91,7 +91,7 @@ namespace ft
 
 		void resize(size_type n, value_type val = value_type())
 		{
-			if (n > this->max_size())
+			if (n > max_size())
 				throw(std::length_error("vector::resize"));
 			else if (n < _size)
 			{
@@ -100,7 +100,7 @@ namespace ft
 				_size = n;
 			}
 			else
-				this->insert(this->end(), n - _size, val);
+				insert(end(), n - _size, val);
 		}
 
 		size_type capacity() const { return _volume; }
@@ -109,10 +109,8 @@ namespace ft
 
 		void reserve(size_type n)
 		{
-#ifdef __APPLE__
 			n = _getValidSize(n);
-#endif
-			if (n > this->max_size())
+			if (n > max_size())
 				throw std::length_error("vector::reserve");
 			else if (n > _volume)
 			{
@@ -182,9 +180,7 @@ namespace ft
 
 		void push_back(const value_type &val)
 		{
-			if (_size + 1 > _volume)
-				_reAlloc();
-			_allocator.construct(&_tab[_size++], val);
+			insert(end(), val);
 		}
 
 		void pop_back()
@@ -304,16 +300,20 @@ namespace ft
 	private:
 		void _reAlloc()
 		{
-			this->reserve((this->size() > 0) ? (int)(this->size() * 2) : 1);
+			this->reserve((_volume > 0) ? (_volume * 2) : 1);
 		}
 		size_t _getValidSize(size_t n)
 		{
+#ifdef __APPLE__
 			if ((n & (n - 1)) == 0)
 				return n;
 			size_t newSize = 1;
 			while (newSize < n)
 				newSize *= 2;
 			return newSize;
+#else
+			return n;
+#endif
 		}
 		size_type _size;
 		size_type _volume;

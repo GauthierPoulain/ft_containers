@@ -46,13 +46,13 @@ int main(void)
 	std::cout << "FT build" << std::endl;
 #endif
 
-	if (false)
+	// if (false)
 	{
 		clock_t start;
 		clock_t end;
 
 		start = clock();
-		size_t pass = 40;
+		size_t pass = 1;
 		for (size_t i = 0; i < pass; i++)
 		{
 			std::cout << "pass " << i + 1 << '/' << pass << std::endl;
@@ -80,13 +80,13 @@ int main(void)
 		std::cout << std::fixed << std::showpoint << std::setprecision(3);
 		std::cout << difference / 1000000 << " seconds" << std::endl;
 	}
-	// if (false)
+	if (false)
 	{
 		clock_t start;
 		clock_t end;
 
 		start = clock();
-		size_t pass = 1;
+		size_t pass = 10;
 		for (size_t i = 0; i < pass; i++)
 		{
 			std::cout << "pass " << i + 1 << '/' << pass << std::endl;
