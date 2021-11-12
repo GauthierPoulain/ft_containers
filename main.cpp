@@ -46,57 +46,41 @@ int main(void)
 	std::cout << "FT build" << std::endl;
 #endif
 
+	clock_t start;
+	clock_t end;
+
+	start = clock();
 	// if (false)
 	{
-		clock_t start;
-		clock_t end;
-
-		start = clock();
-		size_t pass = 1;
+		size_t pass = 20;
 		for (size_t i = 0; i < pass; i++)
 		{
 			std::cout << "pass " << i + 1 << '/' << pass << std::endl;
 			vector_test();
 		}
-		end = clock();
-		double difference = difftime(end, start);
-		std::cout << std::fixed << std::showpoint << std::setprecision(3);
-		std::cout << difference / 1000000 << " seconds" << std::endl;
 	}
 	if (false)
 	{
-		clock_t start;
-		clock_t end;
-
-		start = clock();
 		size_t pass = 40;
 		for (size_t i = 0; i < pass; i++)
 		{
 			std::cout << "pass " << i + 1 << '/' << pass << std::endl;
 			stack_test();
 		}
-		end = clock();
-		double difference = difftime(end, start);
-		std::cout << std::fixed << std::showpoint << std::setprecision(3);
-		std::cout << difference / 1000000 << " seconds" << std::endl;
 	}
-	if (false)
+	// if (false)
 	{
-		clock_t start;
-		clock_t end;
-
-		start = clock();
 		size_t pass = 10;
 		for (size_t i = 0; i < pass; i++)
 		{
 			std::cout << "pass " << i + 1 << '/' << pass << std::endl;
 			map_test();
 		}
-		end = clock();
-		double difference = difftime(end, start);
-		std::cout << std::fixed << std::showpoint << std::setprecision(3);
-		std::cout << difference / 1000000 << " seconds" << std::endl;
 	}
+	end = clock();
+	double difference = difftime(end, start);
+	std::cout << std::fixed << std::showpoint << std::setprecision(3);
+	std::cout << difference / 1000000 << " seconds" << std::endl;
 
 	return 0;
 }

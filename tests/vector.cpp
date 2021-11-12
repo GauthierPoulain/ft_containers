@@ -109,9 +109,12 @@ void vector_test()
 			test.push_back('a' + i);
 		std::cout << test.capacity() << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
 		std::cout << test[0] << ' ' << test[3] << ' ' << test.at(0) << ' ' << test.at(3) << std::endl;
-		test.resize(10);
-		test.reserve(10);
 		std::cout << test.capacity() << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
+		// test.resize(10);
+		// test.reserve(10);
+		test.resize(20);
+		std::cout << test.capacity() << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
+		std::cout << std::endl;
 		test.push_back('a');
 		test.push_back('a');
 		test.push_back('a');
@@ -134,25 +137,25 @@ void vector_test()
 	}
 	// if (false)
 	{
-		ft::vector<char> test(10, 'a');
-		// ft::vector<char> test;
+		// ft::vector<char> test(10, 'a');
+		ft::vector<char> test;
 		//BUG : crash if `ft::vector<char> test;`
-		// print_vector(test);
-		// test.resize(15, 'e');
-		// test.reserve(50);
+		print_vector(test);
+		test.resize(15, 'e');
+		test.reserve(50);
+		std::cout << test.capacity() << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
 		test.push_back('b');
 		std::cout << test.capacity() << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
 		print_vector(test);
-		std::cout << "salut" << std::endl;
 		std::cout << test.capacity() << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
 		ft::vector<char> test2;
 		for (size_t i = 0; i <= 10; i++)
-			test2.push_back('a' + i);	
+			test2.push_back('a' + i);
 		ft::vector<char> test3(test2.begin(), test2.end());
 		test.swap(test3);
 		test2.pop_back();
 		test3.erase(test3.begin() + 2);
-		test2.erase(test2.begin() + 2, test2.begin() + 4);
+		test2.erase(test2.begin() + 2, test2.begin() + 2);
 		print_vector(test);
 		std::cout << test.capacity() << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
 		print_vector(test2);

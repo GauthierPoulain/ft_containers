@@ -26,11 +26,13 @@ namespace ft
 		typedef typename ft::iterator_traits<iterator>::difference_type difference_type;
 		typedef size_t size_type;
 
-		explicit vector(const allocator_type &alloc = allocator_type()) : _size(0), _volume(0), _allocator(alloc), _tab(NULL) {}
+		explicit vector(const allocator_type &alloc = allocator_type()) : _size(0), _volume(0), _allocator(alloc), _tab(NULL)
+		{
+		}
 
 		explicit vector(size_type n, const value_type &val = value_type(), const allocator_type &alloc = allocator_type()) : _size(n), _volume(n), _allocator(alloc), _tab(NULL)
 		{
-			_tab = _allocator.allocate(_size);
+			_tab = _allocator.allocate(_volume);
 			for (size_type i = 0; i < _size; i++)
 				_allocator.construct(&_tab[i], val);
 		}
@@ -100,7 +102,10 @@ namespace ft
 				_size = n;
 			}
 			else
+			{
+				reserve(n);
 				insert(end(), n - _size, val);
+			}
 		}
 
 		size_type capacity() const { return _volume; }
@@ -109,7 +114,6 @@ namespace ft
 
 		void reserve(size_type n)
 		{
-			n = _getValidSize(n);
 			if (n > max_size())
 				throw std::length_error("vector::reserve");
 			else if (n > _volume)
@@ -160,7 +164,7 @@ namespace ft
 		{
 			size_type newSize = last - first;
 			if (newSize > _size)
-				reserve(newSize);
+				reserve(_getValidSize(newSize));
 			for (size_type i = 0; i < _size; i++)
 				_allocator.destroy(&_tab[i]);
 			_size = newSize;
@@ -170,7 +174,7 @@ namespace ft
 		void assign(size_type n, const value_type &val)
 		{
 			if (n > _size)
-				reserve(n);
+				reserve(_getValidSize(n));
 			for (size_type i = 0; i < _size; i++)
 				_allocator.destroy(&_tab[i]);
 			_size = n;
@@ -205,17 +209,17 @@ namespace ft
 		{
 			size_type dist = position - begin();
 			if (_size + n > _volume)
-			{
-				if (n > _size)
-					reserve(_size + n);
-				else
-					_reAlloc();
-			}
-			_size += n;
-			for (size_type i = _size - 1; i > dist; i--)
-				_allocator.construct(&_tab[i], _tab[i - n]);
+				reserve(_getValidSize(_size + n));
 			for (size_type i = 0; i < n; i++)
 				_allocator.construct(&_tab[dist + i], val);
+			if (_size > 0)
+			{
+				_size += n;
+				for (size_type i = _size - 1; i > n; i--)
+					_allocator.construct(&_tab[i], _tab[i - n]);
+			}
+			else
+				_size += n;
 		}
 
 		template <class InputIterator>
@@ -227,7 +231,7 @@ namespace ft
 			if (_size + n > _volume)
 			{
 				if (n > _size)
-					reserve(_size + n);
+					reserve(_getValidSize(_size + n));
 				else
 					_reAlloc();
 			}
@@ -300,12 +304,12 @@ namespace ft
 	private:
 		void _reAlloc()
 		{
-			this->reserve((_volume > 0) ? (_volume * 2) : 1);
+			reserve(_getValidSize((_volume > 0) ? (_volume * 2) : 1));
 		}
 		size_t _getValidSize(size_t n)
 		{
 #ifdef __APPLE__
-			if ((n & (n - 1)) == 0)
+			if ((n & (n - 1)) != 0)
 				return n;
 			size_t newSize = 1;
 			while (newSize < n)
