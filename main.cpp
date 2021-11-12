@@ -50,30 +50,13 @@ int main(void)
 	clock_t end;
 
 	start = clock();
-	// if (false)
 	{
-		size_t pass = 20;
+		size_t pass = 50;
 		for (size_t i = 0; i < pass; i++)
 		{
 			std::cout << "pass " << i + 1 << '/' << pass << std::endl;
 			vector_test();
-		}
-	}
-	if (false)
-	{
-		size_t pass = 40;
-		for (size_t i = 0; i < pass; i++)
-		{
-			std::cout << "pass " << i + 1 << '/' << pass << std::endl;
-			stack_test();
-		}
-	}
-	// if (false)
-	{
-		size_t pass = 10;
-		for (size_t i = 0; i < pass; i++)
-		{
-			std::cout << "pass " << i + 1 << '/' << pass << std::endl;
+			// stack_test();
 			map_test();
 		}
 	}

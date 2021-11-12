@@ -3,7 +3,7 @@ NAME = containers
 CC = clang++
 MAKE = make --no-print-directory
 
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 # CPPFLAGS += -g
 CPPFLAGS += -O3 -fno-builtin
 # CPPFLAGS += -fsanitize=address
@@ -22,6 +22,7 @@ HEADERS = \
 	$(INCLUDE)/utils/is_integral.hpp \
 	$(INCLUDE)/utils/compare.hpp \
 	$(INCLUDE)/utils/RB_tree.hpp \
+	$(INCLUDE)/utils/tests.hpp \
 
 
 SRCS = \

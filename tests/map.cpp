@@ -1,5 +1,7 @@
 #include <string>
 #include <iostream>
+#include <cstdlib>
+#include "../includes/utils/tests.hpp"
 
 #ifdef STL
 #include <map>
@@ -22,10 +24,17 @@ void print_map(ft::map<T1, ft::pair<T2, T3> > map)
 		std::cout << it->first << " [" << it->second.first << ", " << it->second.second << "]";
 	std::cout << std::endl;
 }
+template <typename T1, typename T2, typename T3>
+void print_map(ft::map<T1, T2, T3> map)
+{
+	for (typename ft::map<T1, T2, T3>::iterator it = map.begin(); it != map.end(); ++it)
+		std::cout << it->first << " [" << it->second << "] ";
+	std::cout << std::endl;
+}
 
 int get_rand(int min, int max)
 {
-	return ((std::rand() / (max - min)) + min);
+	return (((std::rand() / (float)RAND_MAX) * (max - min)) + min);
 }
 
 void map_test()
@@ -131,7 +140,8 @@ void map_test()
 	}
 	// if (false)
 	{
-		ft::map<char, int> foo, bar;
+		ft::map<char, int> foo;
+		ft::map<char, int> bar;
 		foo['x'] = 100;
 		foo['y'] = 200;
 		bar['a'] = 11;
@@ -176,7 +186,8 @@ void map_test()
 	// if (false)
 	{
 		ft::map<char, int> mymap;
-		ft::map<char, int>::iterator itlow, itup;
+		ft::map<char, int>::iterator itlow;
+		ft::map<char, int>::iterator itup;
 		mymap['a'] = 20;
 		mymap['b'] = 40;
 		mymap['c'] = 60;
@@ -243,6 +254,22 @@ void map_test()
 				std::cout << i << ' ' << i << ' ' << test.empty() << ' ' << test.size() << std::endl;
 			}
 		}
+		std::cout << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
+	}
+	// if (false)
+	{
+		std::srand(1);
+		cmpByStringLength cmp;
+		ft::map<int, char, cmpByStringLength> test(cmp);
+		for (size_t i = 0; i < 1000; i++)
+		{
+			test.insert(ft::make_pair(get_rand(0, 100), get_rand(32, 127)));
+			if (i % 100 == 0)
+			{
+				std::cout << i << ' ' << i << ' ' << test.empty() << ' ' << test.size() << std::endl;
+			}
+		}
+		print_map(test);
 		std::cout << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
 	}
 }
