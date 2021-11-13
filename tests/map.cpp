@@ -259,8 +259,8 @@ void map_test()
 	// if (false)
 	{
 		std::srand(1);
-		cmpByStringLength cmp;
-		ft::map<int, char, cmpByStringLength> test(cmp);
+		cmpByIntValueBetweenIntMinAndIntMax cmp;
+		ft::map<int, char, cmpByIntValueBetweenIntMinAndIntMax> test(cmp);
 		for (size_t i = 0; i < 1000; i++)
 		{
 			test.insert(ft::make_pair(get_rand(0, 100), get_rand(32, 127)));
