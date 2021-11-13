@@ -102,10 +102,7 @@ namespace ft
 				_size = n;
 			}
 			else
-			{
-				reserve(n);
 				insert(end(), n - _size, val);
-			}
 		}
 
 		size_type capacity() const { return _volume; }
@@ -210,16 +207,14 @@ namespace ft
 			size_type dist = position - begin();
 			if (_size + n > _volume)
 				reserve(_getValidSize(_size + n));
-			for (size_type i = 0; i < n; i++)
-				_allocator.construct(&_tab[dist + i], val);
 			if (_size > 0)
 			{
-				_size += n;
-				for (size_type i = _size - 1; i > n; i--)
+				for (size_type i = _size - 1; i > dist; i--)
 					_allocator.construct(&_tab[i], _tab[i - n]);
 			}
-			else
-				_size += n;
+			_size += n;
+			for (size_type i = dist; i < _size; i++)
+				_allocator.construct(&_tab[i], val);
 		}
 
 		template <class InputIterator>

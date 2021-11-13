@@ -2,7 +2,7 @@
 
 #include <cstdlib>
 
-struct cmpByStringLength
+struct cmpByIntValueBetweenIntMinAndIntMax
 {
 	bool operator()(const int &a, const int &b) const
 	{
