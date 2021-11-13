@@ -14,25 +14,6 @@ namespace ft = std;
 #include "./includes/vector.hpp"
 #endif
 
-void run_test(void)
-{
-	ft::vector<int> vec1;
-
-	for (size_t i = 0; i < 20; i++)
-	{
-		vec1.push_back(i);
-	}
-
-	ft::vector<int>::iterator iter = vec1.begin();
-
-	vec1.insert(iter + 15, 50);
-
-	while (iter != vec1.end())
-	{
-		std::cout << *iter++ << std::endl;
-	}
-}
-
 void vector_test(void);
 void stack_test(void);
 void map_test(void);
@@ -51,13 +32,13 @@ int main(void)
 
 	start = clock();
 	{
-		size_t pass = 50;
+		size_t pass = 1;
 		for (size_t i = 0; i < pass; i++)
 		{
 			std::cout << "pass " << i + 1 << '/' << pass << std::endl;
-			vector_test();
-			// stack_test();
-			map_test();
+			// vector_test();
+			stack_test();
+			// map_test();
 		}
 	}
 	end = clock();
