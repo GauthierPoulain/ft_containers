@@ -13,7 +13,6 @@ template <typename T>
 void print_vector(ft::vector<T> vt)
 {
 	typename ft::vector<T>::iterator it = vt.begin();
-
 	while (it != vt.end())
 		std::cout << *it++ << " ";
 	std::cout << std::endl;
@@ -28,7 +27,6 @@ std::string itoa(int a)
 
 void vector_test()
 {
-	// if (false)
 	{
 		ft::vector<char> test;
 		for (size_t i = 'a'; i <= 'f'; i++)
@@ -43,7 +41,6 @@ void vector_test()
 		print_vector(testcpy);
 		print_vector(testassign);
 	}
-	// if (false)
 	{
 		ft::vector<char> *test = new ft::vector<char>();
 		for (size_t i = 'a'; i <= 'f'; i++)
@@ -61,7 +58,6 @@ void vector_test()
 		delete testcpy;
 		delete test;
 	}
-	// if (false)
 	{
 		ft::vector<char> test;
 		for (size_t i = 'a'; i <= 'f'; i++)
@@ -84,7 +80,6 @@ void vector_test()
 		std::cout << test.size() << ' ' << test.capacity() << ' ' << test.empty() << std::endl;
 		print_vector(test);
 	}
-	// if (false)
 	{
 		ft::vector<int> itest;
 		for (size_t i = 0; i <= 10; i++)
@@ -102,7 +97,6 @@ void vector_test()
 		std::cout << stest.get_allocator().max_size() << std::endl;
 		std::cout << stest.max_size() << std::endl;
 	}
-	// if (false)
 	{
 		ft::vector<char> test;
 		for (size_t i = 0; i <= 4; i++)
@@ -120,7 +114,6 @@ void vector_test()
 		test.push_back('a');
 		std::cout << test.capacity() << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
 	}
-	// if (false)
 	{
 		ft::vector<char> test1;
 		for (size_t i = 0; i <= 2; i++)
@@ -135,10 +128,10 @@ void vector_test()
 		std::cout << (test1 < test2) << (test1 <= test2) << (test1 == test2) << (test1 != test2) << (test1 >= test2) << (test1 > test2) << std::endl;
 		std::cout << (test1 < test3) << (test1 <= test3) << (test1 == test3) << (test1 != test3) << (test1 >= test3) << (test1 > test3) << std::endl;
 	}
-	// if (false)
 	{
-		ft::vector<char> test(10, 'a');
-		// ft::vector<char> test;
+		ft::vector<char> testeee(10, 'a');
+		ft::vector<char> testzzz(testeee.begin(), testeee.end());
+		ft::vector<char> test(testzzz);
 		print_vector(test);
 		test.resize(25, 'e');
 		test.reserve(50);
@@ -167,7 +160,6 @@ void vector_test()
 		print_vector(test2);
 		std::cout << test2.capacity() << ' ' << test2.empty() << ' ' << test2.size() << ' ' << test2.get_allocator().max_size() << ' ' << test2.max_size() << std::endl;
 	}
-	// if (false)
 	{
 		ft::vector<int> test;
 		size_t last = -1;
@@ -182,7 +174,6 @@ void vector_test()
 		}
 		std::cout << test.capacity() << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
 	}
-	// if (false)
 	{
 		ft::vector<char> tab;
 		for (int i = 65; i < 85; i++)
@@ -202,6 +193,5 @@ void vector_test()
 		std::cout << std::endl;
 		ft::vector<char>::const_reverse_iterator rcit = --rit;
 		std::cout << *rcit << std::endl;
-		std::cout << std::endl;
 	}
 }

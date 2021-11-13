@@ -36,9 +36,9 @@ int main(void)
 		for (size_t i = 0; i < pass; i++)
 		{
 			std::cout << "pass " << i + 1 << '/' << pass << std::endl;
-			// vector_test();
+			vector_test();
 			stack_test();
-			// map_test();
+			map_test();
 		}
 	}
 	end = clock();

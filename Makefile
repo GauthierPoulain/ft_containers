@@ -4,8 +4,8 @@ CC = clang++
 MAKE = make --no-print-directory
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-# CPPFLAGS += -g
-CPPFLAGS += -O3 -fno-builtin
+CPPFLAGS += -g
+# CPPFLAGS += -O3 -fno-builtin
 # CPPFLAGS += -fsanitize=address
 
 INCLUDE = ./includes

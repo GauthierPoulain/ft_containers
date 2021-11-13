@@ -13,7 +13,7 @@ namespace ft = std;
 
 void stack_test()
 {
-	// if (false)
+	
 	{
 		ft::stack<int> foo;
 		ft::stack<int> bar;
@@ -32,16 +32,13 @@ void stack_test()
 		std::cout << (foo >= bar);
 		std::cout << (foo <= bar) << std::endl;
 	}
-	// if (false)
 	{
 		ft::stack<std::string> stest;
-		std::cout << stest.size() << std::endl;
-		std::cout << stest.empty() << std::endl;
+		std::cout << stest.size() << ' ' << stest.empty() << std::endl;
+		stest.push("except evaluators");
 		stest.push("everyone");
 		stest.push("hello");
-		stest.push("except evaluators");
-		std::cout << stest.empty() << std::endl;
-		std::cout << stest.size() << std::endl;
+		std::cout << stest.size() << ' ' << stest.empty() << std::endl;
 		for (int i = 0; i < 3; i++)
 		{
 			std::cout << stest.top() << std::endl;
@@ -49,41 +46,34 @@ void stack_test()
 		}
 		std::cout << stest.empty() << std::endl;
 	}
-	// if (false)
 	{
 		ft::stack<int, ft::vector<int> > vstack;
-		std::cout << vstack.size() << std::endl;
-		std::cout << vstack.empty() << std::endl;
+		std::cout << vstack.size() << ' ' << vstack.empty() << std::endl;
 		vstack.push(1);
 		vstack.push(2);
 		vstack.push(3);
-		std::cout << vstack.empty() << std::endl;
-		std::cout << vstack.size() << std::endl;
+		std::cout << vstack.empty() << ' ' << vstack.size() << std::endl;
 		for (int i = 0; i < 3; i++)
 		{
-			std::cout << vstack.top() << std::endl;
+			std::cout << vstack.top();
 			vstack.pop();
 		}
-		std::cout << vstack.empty() << std::endl;
+		std::cout << ' ' << vstack.empty() << std::endl;
 	}
-	// if (false)
 	{
 		ft::stack<int, std::deque<int> > dstack;
-		std::cout << dstack.size() << std::endl;
-		std::cout << dstack.empty() << std::endl;
+		std::cout << dstack.empty() << ' ' << dstack.size() << std::endl;
 		dstack.push(1);
 		dstack.push(2);
 		dstack.push(3);
-		std::cout << dstack.empty() << std::endl;
-		std::cout << dstack.size() << std::endl;
+		std::cout << dstack.empty() << ' ' << dstack.size() << std::endl;
 		for (int i = 0; i < 3; i++)
 		{
-			std::cout << dstack.top() << std::endl;
+			std::cout << dstack.top();
 			dstack.pop();
 		}
-		std::cout << dstack.empty() << std::endl;
+		std::cout << ' ' << dstack.empty() << std::endl;
 	}
-	// if (false)
 	{
 		ft::stack<int> sped;
 		for (int i = 0; i < 15000000; i++)
@@ -97,7 +87,6 @@ void stack_test()
 			sped.pop();
 		std::cout << sped.size() << std::endl;
 	}
-	// if (false)
 	{
 		ft::stack<int> *test = new ft::stack<int>();
 		for (int i = 0; i < 10; i++)
@@ -114,14 +103,16 @@ void stack_test()
 		std::cout << copy->top() << ' ' << copy->size() << std::endl;
 		while (test->size())
 		{
-			std::cout << test->top() << std::endl;
+			std::cout << test->top();
 			test->pop();
 		}
+		std::cout << std::endl;
 		while (copy->size())
 		{
-			std::cout << copy->top() << std::endl;
+			std::cout << copy->top();
 			copy->pop();
 		}
+		std::cout << std::endl;
 		delete test;
 		delete copy;
 	}

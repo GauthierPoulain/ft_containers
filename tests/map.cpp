@@ -39,7 +39,6 @@ int get_rand(int min, int max)
 
 void map_test()
 {
-	// if (false)
 	{
 		ft::map<char, int> test;
 		test['a'] = 10;
@@ -58,7 +57,6 @@ void map_test()
 		print_map(test3);
 		print_map(test4);
 	}
-	// if (false)
 	{
 		ft::map<char, int> m1;
 
@@ -78,7 +76,6 @@ void map_test()
 		std::cout << crit->first << std::endl;
 		std::cout << std::endl;
 	}
-	// if (false)
 	{
 		ft::map<std::string, char> tab;
 		tab.insert(ft::make_pair("hey", 'A'));
@@ -89,7 +86,6 @@ void map_test()
 		std::cout << tab.max_size() << std::endl;
 		std::cout << tab.get_allocator().max_size() << std::endl;
 	}
-	// if (false)
 	{
 		ft::map<std::string, char> tab;
 		tab.insert(ft::make_pair("hey", 'A'));
@@ -98,7 +94,6 @@ void map_test()
 		std::cout << tab["lol"] << std::endl;
 		std::cout << tab["kk"] << std::endl;
 	}
-	// if (false)
 	{
 		ft::map<char, int> mymap;
 		mymap.insert(ft::pair<char, int>('a', 100));
@@ -119,7 +114,6 @@ void map_test()
 			std::cout << it->first << " => " << it->second << ' ';
 		std::cout << std::endl;
 	}
-	// if (false)
 	{
 		ft::map<char, int> mymap;
 		ft::map<char, int>::iterator it;
@@ -138,7 +132,6 @@ void map_test()
 			std::cout << it->first << " => " << it->second << ' ';
 		std::cout << std::endl;
 	}
-	// if (false)
 	{
 		ft::map<char, int> foo;
 		ft::map<char, int> bar;
@@ -155,7 +148,6 @@ void map_test()
 			std::cout << it->first << " => " << it->second << ' ';
 		std::cout << std::endl;
 	}
-	// if (false)
 	{
 		ft::map<int, int> tab;
 		tab.insert(ft::make_pair(1, 5));
@@ -166,7 +158,6 @@ void map_test()
 		tab.clear();
 		std::cout << tab.size() << std::endl;
 	}
-	// if (false)
 	{
 		ft::map<char, int> mymap;
 		char c;
@@ -183,7 +174,6 @@ void map_test()
 		}
 		std::cout << std::endl;
 	}
-	// if (false)
 	{
 		ft::map<char, int> mymap;
 		ft::map<char, int>::iterator itlow;
@@ -200,7 +190,6 @@ void map_test()
 			std::cout << it->first << " => " << it->second << ' ';
 		std::cout << std::endl;
 	}
-	// if (false)
 	{
 		ft::map<char, int> mymap;
 		mymap['a'] = 10;
@@ -213,7 +202,6 @@ void map_test()
 		std::cout << ret.second->first << " => " << ret.second->second << ' ';
 		std::cout << std::endl;
 	}
-	// if (false)
 	{
 		ft::map<int, char> test;
 		ft::map<int, char> test2;
@@ -242,7 +230,6 @@ void map_test()
 		std::cout << (test >= test3);
 		std::cout << std::endl;
 	}
-	// if (false)
 	{
 		std::srand(1);
 		ft::map<int, char> test;
@@ -256,7 +243,6 @@ void map_test()
 		}
 		std::cout << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
 	}
-	// if (false)
 	{
 		std::srand(1);
 		cmpByIntValueBetweenIntMinAndIntMax cmp;
@@ -270,6 +256,6 @@ void map_test()
 			}
 		}
 		print_map(test);
-		std::cout << ' ' << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
+		std::cout << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
 	}
 }
