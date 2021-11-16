@@ -247,15 +247,25 @@ void map_test()
 		std::srand(1);
 		cmpByIntValueBetweenIntMinAndIntMax cmp;
 		ft::map<int, char, cmpByIntValueBetweenIntMinAndIntMax> test(cmp);
+		ft::map<int, char, std::greater<int> > test2;
+		ft::map<int, char> test3;
 		for (size_t i = 0; i < 1000; i++)
 		{
 			test.insert(ft::make_pair(get_rand(0, 100), get_rand(32, 127)));
+			test2.insert(ft::make_pair(get_rand(0, 100), get_rand(32, 127)));
+			test3.insert(ft::make_pair(get_rand(0, 100), get_rand(32, 127)));
 			if (i % 100 == 0)
 			{
 				std::cout << i << ' ' << i << ' ' << test.empty() << ' ' << test.size() << std::endl;
+				std::cout << i << ' ' << i << ' ' << test2.empty() << ' ' << test2.size() << std::endl;
+				std::cout << i << ' ' << i << ' ' << test3.empty() << ' ' << test3.size() << std::endl;
 			}
 		}
 		print_map(test);
+		print_map(test2);
+		print_map(test3);
 		std::cout << test.empty() << ' ' << test.size() << ' ' << test.get_allocator().max_size() << ' ' << test.max_size() << std::endl;
+		std::cout << test2.empty() << ' ' << test2.size() << ' ' << test2.get_allocator().max_size() << ' ' << test2.max_size() << std::endl;
+		std::cout << test3.empty() << ' ' << test3.size() << ' ' << test3.get_allocator().max_size() << ' ' << test3.max_size() << std::endl;
 	}
 }

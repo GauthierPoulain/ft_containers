@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <time.h>
+#include <stdlib.h>
 
 #ifdef STL
 #include <map>
@@ -18,7 +19,7 @@ void vector_test(void);
 void stack_test(void);
 void map_test(void);
 
-int main(void)
+int main(int argc, char *argv[])
 {
 
 #ifdef STL
@@ -32,7 +33,12 @@ int main(void)
 
 	start = clock();
 	{
-		size_t pass = 1;
+		size_t pass;
+		if (argc < 2)
+			pass = 1;
+		else
+			pass = atoi(argv[1]);
+
 		for (size_t i = 0; i < pass; i++)
 		{
 			std::cout << "pass " << i + 1 << '/' << pass << std::endl;

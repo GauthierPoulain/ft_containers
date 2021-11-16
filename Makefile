@@ -4,9 +4,11 @@ CC = clang++
 MAKE = make --no-print-directory
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-CPPFLAGS += -g
-# CPPFLAGS += -O3 -fno-builtin
+# CPPFLAGS += -g
+CPPFLAGS += -O3 -fno-builtin
 # CPPFLAGS += -fsanitize=address
+
+TESTPASS = 20
 
 INCLUDE = ./includes
 
@@ -64,10 +66,10 @@ test: all
 	$(MAKE) -j _test_all;
 
 _test_stl:
-	./stl_$(NAME) > stl_test.out
+	./stl_$(NAME) $(TESTPASS) > stl_test.out
 
 _test_ft:
-	./ft_$(NAME) > ft_test.out
+	./ft_$(NAME) $(TESTPASS) > ft_test.out
 
 _test_all:  _test_stl _test_ft
 	diff stl_test.out ft_test.out
